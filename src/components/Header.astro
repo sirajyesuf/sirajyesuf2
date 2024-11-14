@@ -1,0 +1,41 @@
+---
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { SITE } from "@consts";
+---
+<header class="border-b border-gray-200 h-16">
+	<Container>
+        <div class="flex flex-wrap  justify-between items-center h-full">
+            <Link href="/" underline={false}>
+              <div class="font-extrabold text-2xl uppercase text-white bg-[#333333] px-4 py-1 hover:bg-[#005d8a]  active:bg-[#ffd363]">
+                {SITE.NAME}
+              </div>
+            </Link>
+            <nav class="flex gap-4">
+              <Link href="/blog" underline={false}>
+                <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                    articles
+                </div>
+              </Link>
+
+              <Link href="/work" underline={false}>
+                <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                    work
+                </div>
+              </Link>
+
+              <Link href="/projects" underline={false}>
+                <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                    about
+                </div>
+              </Link>
+
+              <Link href="/projects" underline={false}>
+                <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                    rss
+                </div>
+              </Link>
+            </nav>
+          </div>
+	</Container>
+</header>
