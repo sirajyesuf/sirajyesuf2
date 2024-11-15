@@ -11,7 +11,7 @@ import { SITE } from "@consts";
                 {SITE.NAME}
               </div>
             </Link>
-            <nav class="flex gap-4">
+            <nav class="hidden md:flex gap-4">
               <Link href="/blog" underline={false}>
                 <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
                     articles
@@ -39,6 +39,95 @@ import { SITE } from "@consts";
                 </div>
               </Link>
             </nav>
+
+            <button
+            id="menuButton"
+            aria-label="menu button"
+            class="md:hidden"
+            >
+             
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+                  
+            </button>
+
+            <button
+            id="closeButton"
+            aria-label="close button"
+            class="hidden"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+                  
+            </button>
+
           </div>
 	</Container>
+
+    <div class="relative">
+        
+        <div id="overlay" class="fixed  bg-black bg-opacity-50  hidden"></div>
+      
+        <div id="mobileNav" class="fixed top-16 left-0 bottom-0 w-full bg-[#ffffff] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+          <div class="p-4 h-full flex flex-col">
+            <nav class="flex flex-col">
+                <Link href="/blog" underline={false}>
+                    <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                        articles
+                    </div>
+                  </Link>
+    
+                  <Link href="/work" underline={false}>
+                    <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                        work
+                    </div>
+                  </Link>
+    
+                  <Link href="/projects" underline={false}>
+                    <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                        about
+                    </div>
+                  </Link>
+    
+                  <Link href="/projects" underline={false}>
+                    <div class="text-black  font-extrabold uppercase px-4 py-1 hover:bg-[#005d8a] hover:text-white active:bg-[#ffd363]">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd" d="M3.75 4.5a.75.75 0 0 1 .75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 0 1-.75.75h-.75a.75.75 0 0 1-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 0 1-.75-.75V4.5Zm0 6.75a.75.75 0 0 1 .75-.75h.75a8.25 8.25 0 0 1 8.25 8.25v.75a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.75a6 6 0 0 0-6-6H4.5a.75.75 0 0 1-.75-.75v-.75Zm0 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
+                        </svg>
+                          
+                    </div>
+                  </Link>
+                </nav>
+          </div>
+        </div>
+      </div>
 </header>
+
+
+<script>
+
+    const menuButton = document.getElementById('menuButton');
+    const closeButton = document.getElementById('closeButton')
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('overlay');
+  
+    let isOpen = false;
+  
+    function toggleMenu() {
+      isOpen = !isOpen;
+      mobileNav.classList.toggle('translate-x-0');
+      overlay.classList.toggle('hidden');
+      menuButton.classList.toggle('hidden');
+      closeButton.classList.toggle('hidden');
+      
+      // Update aria-expanded attribute
+      menuButton.setAttribute('aria-expanded', isOpen.toString());
+      closeButton.setAttribute('aria-expanded',isOpen.toString())
+    }
+  
+    menuButton.addEventListener('click', toggleMenu);
+    closeButton.addEventListener('click',toggleMenu)
+    overlay.addEventListener('click', toggleMenu);
+  </script>
