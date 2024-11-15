@@ -117,17 +117,17 @@ import { SITE } from "@consts";
   
     function toggleMenu() {
       isOpen = !isOpen;
-      mobileNav.classList.toggle('translate-x-0');
-      overlay.classList.toggle('hidden');
-      menuButton.classList.toggle('hidden');
-      closeButton.classList.toggle('hidden');
+      mobileNav?.classList.toggle('translate-x-0');
+      overlay?.classList.toggle('hidden');
+      menuButton?.classList.toggle('hidden');
+      closeButton?.classList.toggle('hidden');
       
       // Update aria-expanded attribute
-      menuButton.setAttribute('aria-expanded', isOpen.toString());
-      closeButton.setAttribute('aria-expanded',isOpen.toString())
+      menuButton?.setAttribute('aria-expanded', isOpen.toString());
+      closeButton?.setAttribute('aria-expanded',isOpen.toString())
     }
   
-    menuButton.addEventListener('click', toggleMenu);
-    closeButton.addEventListener('click',toggleMenu)
-    overlay.addEventListener('click', toggleMenu);
+    menuButton?.addEventListener('click', toggleMenu);
+    closeButton?.addEventListener('click',toggleMenu)
+    overlay?.addEventListener('click', toggleMenu);
   </script>
